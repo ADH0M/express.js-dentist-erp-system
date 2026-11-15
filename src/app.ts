@@ -4,6 +4,7 @@ import cors from "cors";
 import morgan from "morgan";
 import { env } from "./config/env";
 import { authRoutes } from "./modules/auth/routes";
+import { patientRoutes } from "./modules/patients/routes";
 import { notFoundHandler } from "./common/middlewares/not-found";
 import { errorHandler } from "./common/middlewares/error-handler";
 
@@ -45,7 +46,7 @@ export function createApp(): Application {
 
   /* ---------- Modules ---------- */
   app.use(`${env.API_PREFIX}/auth`, authRoutes);
-  // app.use(`${env.API_PREFIX}/patients`, ...)         → step 03
+  app.use(`${env.API_PREFIX}/patients`, patientRoutes); // step 03
   // app.use(`${env.API_PREFIX}/appointments`, ...)     → step 04
   // app.use(`${env.API_PREFIX}/billing`, ...)          → step 05
   // app.use(`${env.API_PREFIX}/staff`, ...)            → step 06
